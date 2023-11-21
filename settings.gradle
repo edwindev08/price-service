@@ -1,0 +1,5 @@
+rootProject.name = 'price-service'
+
+include ':price'
+findProject(':price').projectDir = new File('src/price')
+
