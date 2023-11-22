@@ -8,6 +8,7 @@ allprojects {
 	apply plugin: 'java'
 	apply plugin: 'io.spring.dependency-management'
 	apply plugin: 'org.springframework.boot'
+	apply plugin: 'jacoco'
 	apply plugin: 'application'
 
 	mainClassName = 'com.edwindev08.price.PriceServiceApplication'
@@ -66,6 +67,14 @@ allprojects {
 		}
 	}
 
+	jacocoTestReport {
+		executionData test
+		reports {
+			xml.required = true
+			csv.required = false
+		}
+	}
+
 	task view_paths {
 		doLast { task ->
 			println "$task.project.name"
@@ -82,8 +91,9 @@ tasks.named('bootBuildImage') {
 	builder = 'paketobuildpacks/builder-jammy-base:latest'
 }
 
-tasks.named('test') {
+tasks.named("test") {
 	useJUnitPlatform()
+	finalizedBy jacocoTestReport
 }
 
 // All subprojects (located in src/*)

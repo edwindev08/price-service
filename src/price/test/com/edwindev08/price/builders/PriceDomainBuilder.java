@@ -2,6 +2,7 @@ package com.edwindev08.price.builders;
 
 
 
+import com.edwindev08.price.domain.model.dto.PriceDto;
 import com.edwindev08.price.domain.model.entity.Price;
 
 import java.time.LocalDate;
@@ -84,6 +85,18 @@ public class PriceDomainBuilder {
                 childObject.buildPriority(),
                 25.45,
                 childObject.buildCurrency()
+        );
+    }
+
+    public static PriceDto buildPriceDto() {
+        var childObject = new ChildObjectBuilder();
+        return new PriceDto(
+                childObject.buildProduct(),
+                childObject.buildBrandId(),
+                childObject.buildPriceList(),
+                childObject.buildStartDate(),
+                childObject.buildEndDate(),
+                childObject.buildFinalPrice()
         );
     }
 }

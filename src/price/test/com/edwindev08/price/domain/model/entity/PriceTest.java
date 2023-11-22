@@ -1,4 +1,4 @@
-package com.edwindev08.price.model.entity;
+package com.edwindev08.price.domain.model.entity;
 
 import com.edwindev08.price.builders.PriceDomainBuilder;
 import org.junit.jupiter.api.Test;
@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class PriceTest {
 
@@ -21,6 +21,7 @@ class PriceTest {
                 LocalTime.of(23, 59, 59));
 
         var price = PriceDomainBuilder.build();
+        var price2 = PriceDomainBuilder.buildWithDateCase1();
 
 
         assertEquals(1L, price.getId());
@@ -32,6 +33,8 @@ class PriceTest {
         assertEquals(0, price.getPriority());
         assertEquals(35.50, price.getFinalPrice());
         assertEquals("EUR", price.getCurrency());
+        assertNotEquals(price.hashCode(), price2.hashCode());
+        assertNotEquals(price, price2);
 
 
     }

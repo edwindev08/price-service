@@ -4,10 +4,10 @@ compose:
 	@docker-compose -f docker-compose.ci.yml up -d
 
 build:
-	@./gradlew build --warning-mode all
+	@./gradlew build
 
 run-tests:
-	@./gradlew test --warning-mode all
+	@./gradlew test
 
 # Start the app
 run:
