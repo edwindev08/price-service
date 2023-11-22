@@ -41,6 +41,7 @@ allprojects {
 		implementation 'org.apache.logging.log4j:log4j-api:2.21.1'
 		implementation 'org.apache.logging.log4j:log4j-core:2.21.1'
 		implementation 'com.h2database:h2:2.2.224'
+		implementation 'javax.persistence:javax.persistence-api:2.2'
 		implementation 'com.fasterxml.jackson.core:jackson-annotations:2.15.3'
 
 		compileOnly 'org.projectlombok:lombok'
@@ -49,7 +50,6 @@ allprojects {
 		testImplementation 'org.springframework.boot:spring-boot-starter-test'
 		testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
 		testImplementation 'org.mockito:mockito-core:3.3.3'
-//	testImplementation 'com.github.javafaker:javafaker:1.0.1'
 		testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
 	}
 
@@ -112,18 +112,6 @@ subprojects {
 		}
 	}
 
-	dependencies {
-		implementation 'org.springframework.boot:spring-boot-starter-web:3.1.5'
-
-		testImplementation rootProject.sourceSets.main.output
-		testImplementation 'org.springframework.boot:spring-boot-starter-test:3.1.5'
-
-		if (project.name != "price") {
-			implementation project(":price")
-			testImplementation project(":price").sourceSets.test.output
-		}
-	}
-
 	bootJar {
 		enabled = false
 	}
@@ -137,14 +125,5 @@ bootJar {
 	archiveBaseName.set('price-service')
 	archiveVersion.set('0.0.1')
 	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-}
-
-dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web:3.1.5'
-
-	implementation project(":price")
-
-	testImplementation 'org.springframework.boot:spring-boot-starter-test:3.1.5'
-	testImplementation project(":price").sourceSets.test.output
 }
 
