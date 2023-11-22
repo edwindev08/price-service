@@ -3,7 +3,6 @@ package com.edwindev08.price.domain.service;
 
 import com.edwindev08.price.builders.PriceDomainBuilder;
 import com.edwindev08.price.domain.model.entity.Price;
-import com.edwindev08.price.domain.model.exception.PriceNotFoundException;
 import com.edwindev08.price.domain.port.dao.PriceDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
